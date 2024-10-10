@@ -2,7 +2,7 @@ import requests
 from dotenv import load_dotenv
 import os
 
-class HttpClientEmail:
+class EmailService:
     def __init__(self):
         load_dotenv()
         self.url  = os.getenv('API_URL')
@@ -15,7 +15,7 @@ class HttpClientEmail:
             'Content-Type': 'application/json'
         }
 
-    def sendEmail(self):
+    def send_email(self):
         response = requests.post(self.url, json=self.data, headers=self.headers)
         if response.status_code == 200:
             print('Petición exitosa')
