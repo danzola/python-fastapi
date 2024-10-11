@@ -7,10 +7,18 @@ router = APIRouter(
     tags=["process"],
 )
 
-@router.post("/")
+@router.post("/p1")
 async def process(
     request: CallbackRequest, 
     background_tasks: BackgroundTasks):
     print(f"Tenant: {request.tenant}")
-    background_tasks.add_task(invoke_callback, request)
+    background_tasks.add_task(invoke_callback, request, 200)
+    return {"message": "Callback will be invoked after n minutes"}
+
+@router.post("/p2")
+async def process(
+    request: CallbackRequest, 
+    background_tasks: BackgroundTasks):
+    print(f"Tenant: {request.tenant}")
+    background_tasks.add_task(invoke_callback, request, 404)
     return {"message": "Callback will be invoked after n minutes"}

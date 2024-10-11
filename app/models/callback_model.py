@@ -2,7 +2,7 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 class CallbackRequest(BaseModel):
-    callback_url: str
+    url_callback: str
     tenant: str
 
 class EmailTemplate(BaseModel):
